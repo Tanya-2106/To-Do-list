@@ -1,126 +1,27 @@
-HTML is used to create the structure of your to-do list. Here's a basic example:
+# To Do List
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>To Do List App</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class ="container">
-            <div class="todo-app">
-            <h2>To Do List <img src="images/icon2.png"></h2>
-            <div class="row">
-                <input type="text" id="input-box" placeholder="Add your text">
-                <button onclick="addTask()">Add</button>
-            </div>
-            <ul id="list-container">
-            </ul>
-        </div>
-     </div>
+A simple web-based To Do List application that allows you to add, check, and remove tasks. Your tasks are saved in your browser's local storage, so they persist even after you close or refresh the page.
 
-         <script src="script.js"></script>
-    </body>
-</html>
+## Features
 
-CSS is used to style your to-do list. Here’s an example of how you might style it:
+- Add new tasks
+- Mark tasks as completed
+- Remove tasks
+- Persistent storage using localStorage
 
-*{
-    margin: 0;
-    padding: 0;
-    font-family:'Poppins', sans-serif;
-    box-sizing: border-box;
-}
+## Usage
 
-.container{
-    width:100%;
-    min-height: 100vh;
-    background-image: linear-gradient( 109.6deg,  rgba(15,2,2,1) 11.2%, rgba(36,163,190,1) 91.1% );
-    padding: 10px;
-    
-}
-.todo-app{
-    width: 100%;
-    max-width: 540px;
-    background: #fff;
-    margin: 100px auto 20px;
-    padding: 40px 30px 70px;
-    border-radius: 10px;
-}
-.todo-app h2{
-    color: #002765;
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-.todo-app h2 img{
-    width: 30px;
-    margin-left: 10px;
-}
-.row{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #edeef0;
-    border-radius: 30px;
-    padding-left: 20px;
-    margin-bottom: 25px;
-}
-input{
-    flex: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    padding: 10px;
-    font-weight: 14px;
-}.....etc
+1. Open `index.html` in your web browser.
+2. Enter a task in the input box and click the "Add" button (or press Enter).
+3. Click on a task to mark it as completed.
+4. Click the "×" button next to a task to remove it.
 
+## Project Structure
 
-JavaScript adds functionality to your to-do list, such as adding and removing tasks and other functions:
-const inputBox = document.getElementById("input-box");
-const listContainer = document.getElementById("list-container");
+- `index.html` - Main HTML file
+- `style.css` - Styles for the To Do List
+- `script.js` - JavaScript logic for task management
 
-function addTask(){
-    if(inputBox.value === ''){
-        alert("You must write something!")
-    }
-    else{
-        let li = document.createElement("li");
-        li.innerHTML = inputBox.value;
-        listContainer.appendChild(li);
-        let span = document.createElement("span");
-        span.innerHTML = "\u00d7";
-        li.appendChild(span);
-    }
-    inputBox.value = "";
-    saveData();
-}
+## License
 
-listContainer.addEventListener("click",function(e){
-    if(e.target.tagName === "LI"){
-        e.target.classList.toggle("checked");
-        saveData();
-    }
-    else if(e.target.tagName === "SPAN"){
-        e.target.parentElement.remove();
-        saveData();
-    }
-}, false);
-
-function saveData(){
-    localStorage.setItem("data", listContainer.innerHTML);
-}
-
-function showTask(){
-    listContainer.innerHTML = localStorage.getItem("data");
-}
-showTask();
-
-
-Overall, developing a to-do list application is both a valuable educational exercise and a practical tool for everyday life. It combines technical skills with real-world utility, making it a rewarding project for anyone interested in web development or personal organization.
-
-
-
-
-
+This project is for educational purposes.
